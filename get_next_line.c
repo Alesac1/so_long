@@ -19,7 +19,7 @@ char	*get_line(int fd, char *line)
 
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
-		return (NULL);
+		return (0);
 	b = 1;
 	while (!(ft_strchr(line, '\n')) && b > 0)
 	{
@@ -27,7 +27,7 @@ char	*get_line(int fd, char *line)
 		if (b == -1)
 		{
 			free(buf);
-			return (NULL);
+			return (0);
 		}
 		buf[b] = '\0';
 		line = ft_strjoin(line, buf);
@@ -43,12 +43,12 @@ char	*get_new_line(char *line)
 
 	i = 0;
 	if (!line[i])
-		return (NULL);
+		return (0);
 	while (line[i] && line[i] != '\n')
 		i++;
 	new = (char *)malloc(sizeof(char) * (i + 2));
 	if (!new)
-		return (NULL);
+		return (0);
 	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
@@ -76,11 +76,11 @@ char	*new_line(char *line)
 	if (!line[i])
 	{
 		free(line);
-		return (NULL);
+		return (0);
 	}
 	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - i + 1));
 	if (!str)
-		return (NULL);
+		return (0);
 	i++;
 	j = 0;
 	while (line[i])
@@ -96,10 +96,10 @@ char	*get_next_line(int fd)
 	char		*out;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+		return (0);
 	line = get_line(fd, line);
 	if (!line)
-		return (NULL);
+		return (0);
 	out = get_new_line(line);
 	line = new_line(line);
 	return (out);

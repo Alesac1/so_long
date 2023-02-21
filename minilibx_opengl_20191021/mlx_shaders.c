@@ -6,7 +6,6 @@
 #include <OpenGL/gl3.h>
 #include "mlx_int.h"
 
-
 void display_log(GLuint object, void (*param_func)(), void (*getlog_func)())
 {
   GLint log_length;

@@ -49,8 +49,7 @@ typedef struct	glsl_info_s
   GLint		loc_font_atlassize;
 } glsl_info_t;
 
-
-typedef struct	mlx_img_list_s
+typedef struct  mlx_img_list_s
 {
   int			width;
   int			height;
