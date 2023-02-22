@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:09:00 by asacchin          #+#    #+#             */
-/*   Updated: 2023/02/21 17:09:03 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:18:26 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,54 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <mlx.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
 
-typedef struct s_mlx
+typedef struct s_vector
 {
-	void	*mlx;
-	void	*win;
-}				t_mlx;
+	int	x;
+	int	y;
+}	t_vector;
+
+typedef struct s_element
+{
+	int			framecount;
+	int			nb;
+	void		*reference;
+	t_vector	pos;
+}	t_element;
+
+typedef struct s_game
+{
+	void		*img;
+	char		**map;
+	void		*mlx;
+	void		*win;
+	t_element	player;
+	t_element	collectible;
+	t_element	exit;
+	t_element	floor;
+	t_element	wall;
+	int			nbmoves;
+	char		*str;
+	int			status;
+	int			b;
+	int			h;
+}	t_game;
 
 typedef struct s_image
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_image;
+	void		*reference;
+	t_vector	size;
+	t_vector	pos;
+	char		*pixels;
+	int			bits_per_pixel;
+	int			line_size;
+	int			endian;
+}	t_image;
 
 char	*ft_strjoin(char *s1, char *s2);
 char	*get_line(int fd, char *line);
