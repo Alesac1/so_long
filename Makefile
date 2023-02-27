@@ -6,11 +6,11 @@
 #    By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 15:09:12 by asacchin          #+#    #+#              #
-#    Updated: 2023/02/16 15:52:29 by asacchin         ###   ########.fr        #
+#    Updated: 2023/02/26 18:16:34 by asacchin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c 
+SRCS = main.c map.c utils.c utils2.c gnl/get_next_line.c gnl/get_next_line_utils.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -23,6 +23,8 @@ LINKAR =  -framework OpenGL -framework AppKit
 RM = rm -f
 
 NAME = so_long
+
+GETNEXTLINE = gnl/get_next_line.a
 
 PRINTF = ft_printf/libftprintf.a
 
@@ -38,7 +40,7 @@ all: ${NAME}
 clean:
 	${RM} ${OBJS}
 
-fclean:
+fclean: clean
 	${RM} ${NAME}
 
 re: fclean all

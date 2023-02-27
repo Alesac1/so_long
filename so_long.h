@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:09:00 by asacchin          #+#    #+#             */
-/*   Updated: 2023/02/22 17:18:26 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:01:11 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "minilibx_opengl_20191021/mlx.h"
 # include "ft_printf/ft_printf.h"
+# include "gnl/get_next_line.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
@@ -39,10 +40,16 @@ typedef struct s_element
 	t_vector	pos;
 }	t_element;
 
+typedef struct s_map
+{
+	char	**map;
+	int		col;
+}	t_map;
+
 typedef struct s_game
 {
 	void		*img;
-	char		**map;
+	t_map		map;
 	void		*mlx;
 	void		*win;
 	t_element	player;
@@ -55,6 +62,7 @@ typedef struct s_game
 	int			status;
 	int			b;
 	int			h;
+	int			numcol;
 }	t_game;
 
 typedef struct s_image
@@ -68,12 +76,10 @@ typedef struct s_image
 	int			endian;
 }	t_image;
 
-char	*ft_strjoin(char *s1, char *s2);
-char	*get_line(int fd, char *line);
-char	*ft_strchr(char *s, int c);
-char	*get_new_line(char *line);
-char	*get_next_line(int fd);
-char	*new_line(char *line);
-int		ft_strlen(char *s);
+char	**map_init(t_game *game, char *file);
+char	*ft_strdup(const char *s);
+void	*ft_calloc(size_t nmeb, size_t size);
+void	ft_bzero(void *str, size_t n);
+void	error_map(void);
 
 #endif

@@ -6,11 +6,17 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:24:41 by asacchin          #+#    #+#             */
-/*   Updated: 2023/02/22 18:25:08 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:06:12 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	error_map(void)
+{
+	ft_printf("Map Error");
+	exit(0);
+}
 
 void	*ft_memset(void *str, int c, size_t n)
 {
