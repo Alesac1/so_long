@@ -6,11 +6,11 @@
 #    By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 15:09:12 by asacchin          #+#    #+#              #
-#    Updated: 2023/02/26 18:16:34 by asacchin         ###   ########.fr        #
+#    Updated: 2023/02/28 13:51:50 by asacchin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c map.c utils.c utils2.c gnl/get_next_line.c gnl/get_next_line_utils.c
+SRCS = main.c Map/map.c utils.c utils2.c gnl/get_next_line.c gnl/get_next_line_utils.c
 
 OBJS = ${SRCS:.c=.o}
 

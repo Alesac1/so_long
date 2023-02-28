@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:24:41 by asacchin          #+#    #+#             */
-/*   Updated: 2023/02/26 15:06:12 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:07:02 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_map(void)
 {
-	ft_printf("Map Error");
+	ft_printf("Map Error\n");
 	exit(0);
 }
 

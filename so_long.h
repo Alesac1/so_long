@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:09:00 by asacchin          #+#    #+#             */
-/*   Updated: 2023/02/26 18:01:11 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:12:54 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,52 +34,71 @@ typedef struct s_vector
 
 typedef struct s_element
 {
+	t_vector	pos;
 	int			framecount;
 	int			nb;
 	void		*reference;
-	t_vector	pos;
 }	t_element;
 
 typedef struct s_map
 {
 	char	**map;
-	int		col;
+	int		col;		/* larghezza */
+	int		altezza;	/* altezza */
+	int		alt;
 }	t_map;
+
+typedef struct s_textures {
+	void	*background;
+	void	*wall;
+	void	*escape[12];
+	void	*player[2];
+	void	*collect[12];
+	void	*win_screen;
+}				t_textures;
 
 typedef struct s_game
 {
-	void		*img;
 	t_map		map;
-	void		*mlx;
-	void		*win;
 	t_element	player;
 	t_element	collectible;
 	t_element	exit;
 	t_element	floor;
 	t_element	wall;
-	int			nbmoves;
+	t_textures	*images;
+	void		*img;
+	void		*mlx;
+	void		*win;
 	char		*str;
+	int			nbmoves;
 	int			status;
-	int			b;
-	int			h;
-	int			numcol;
 }	t_game;
 
 typedef struct s_image
 {
-	void		*reference;
 	t_vector	size;
 	t_vector	pos;
+	void		*reference;
 	char		*pixels;
 	int			bits_per_pixel;
 	int			line_size;
 	int			endian;
 }	t_image;
-
+/*			Map			*/
 char	**map_init(t_game *game, char *file);
+void	read_map(char	*file, t_game *game);
+int		check_shape(char *file, t_game *game);
+void	player_check(char *file, t_game *game);
+void	map_checkvalues(char *file, t_game *game);
+int		check_mapextension(char *file);
+int		check_map_border(t_game *game);
+int		altezza_mappa(char *file, t_game *game);
+
+void	init_objects(t_game *game);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmeb, size_t size);
 void	ft_bzero(void *str, size_t n);
 void	error_map(void);
+void	allocate_struct(t_game *game);
 
 #endif

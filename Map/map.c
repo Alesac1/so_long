@@ -6,11 +6,11 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:17:20 by asacchin          #+#    #+#             */
-/*   Updated: 2023/02/27 17:39:06 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:36:45 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 void	read_map(char	*file, t_game *game)
 {
@@ -19,22 +19,21 @@ void	read_map(char	*file, t_game *game)
 	int		c_line;
 
 	c_line = 0;
-	game->b = 0;
-	fd = open("Maps/map_0.ber", O_RDONLY);
+	game->map.altezza = 1;
+	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
-	game->map.col = ft_strlen(line);
-	game->map.map = malloc(sizeof(char *) * (game->b + 1));
+	game->map.col = ft_strlen(line) - 1;
+	// ft_printf("valore di altezza %d\n", game->map.alt);
+	game->map.map = malloc(sizeof(char *) * (game->map.alt));
 	while (line)
 	{
 		game->map.map[c_line] = ft_strdup(line);
 		if (game->map.map[c_line][ft_strlen(game->map.map[c_line]) - 1] == '\n')
 		{
-			game->map.map[c_line][ft_strlen(game->map.map[c_line]) - 1] = '\0';	
+			game->map.map[c_line][ft_strlen(game->map.map[c_line]) - 1] = '\0';
 		}
 		c_line++;
-		// printf("Il valore di c_line: %d\n", c_line);
-		game->b++;
-		// printf("Il valore di b: %d\n", game->b);
+		game->map.altezza++;
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -128,23 +127,23 @@ int check_map_border(t_game *game)
 		i++;
 	}
 	i = 0;
-	while (i < game->b)
+	while (i < game->map.col)
 	{
-		if (game->map.map[game->b - 1][i] != '1')
+		if (game->map.map[game->map.alt - 1][i] != '1')
 			return (0);
 		i++;
 	}
 	i = 0;
-	while (i < game->b)
+	while (i < game->map.alt)
 	{
 		if (game->map.map[i][0] != '1')
 			return (0);
 		i++;
 	}
 	i = 0;
-	while (i < game->b)
+	while (i < game->map.alt)
 	{
-		j = ft_strlen(game->map.map[i] - 1);
+		j = ft_strlen(game->map.map[i]) -1;
 		if (j >= 0 && game->map.map[i][j] != '1')
 			return (0);
 		i++;
@@ -155,6 +154,7 @@ int check_map_border(t_game *game)
 char	**map_init(t_game *game, char *file)
 {
 	read_map(file, game);
+	altezza_mappa(file, game);
 	map_checkvalues(file, game);
 	if (!game->collectible.nb)
 	{
@@ -174,5 +174,6 @@ char	**map_init(t_game *game, char *file)
 	}
 	if (!check_map_border(game))
 		return (NULL);
+	// ft_printf("valore di altezza %d\n", game->map.alt);
 	return (game->map.map);
 }
