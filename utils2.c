@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 15:07:44 by asacchin          #+#    #+#             */
-/*   Updated: 2023/02/28 18:15:47 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:51:30 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,18 @@ int	check_mapextension(char *file)
 	exit(2);
 }
 
-void	allocate_struct(t_game *game)
+t_game	*allocate_struct(void)
 {
-	game = malloc(sizeof(t_game));
-	if (!game)
+	t_game	*g;
+
+	g = malloc(sizeof(t_game));
+	if (!g)
 	{
-		free(game);
-		ft_printf("game é null");
+		free(g);
+		ft_printf("g é null");
 		exit(0);
 	}
+	return (g);
 }
 
 void	init_objects(t_game *game)
@@ -46,7 +49,7 @@ void	init_objects(t_game *game)
 	game->map.altezza = 0;
 }
 
-int altezza_mappa(char *file, t_game *game) 
+int	altezza_mappa(char *file, t_game *game)
 {
 	int		fd;
 	char	*line;

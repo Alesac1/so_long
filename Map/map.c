@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:17:20 by asacchin          #+#    #+#             */
-/*   Updated: 2023/02/28 18:36:45 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:00:29 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	read_map(char	*file, t_game *game)
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	game->map.map[c_line] = 0;
 	close(fd);
 }
