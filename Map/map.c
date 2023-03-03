@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:17:20 by asacchin          #+#    #+#             */
-/*   Updated: 2023/03/01 16:00:29 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:10:11 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	check_shape(char *file, t_game *game)
 	int	i;
 	int	width;
 
+	width = 0;
 	width = ft_strlen(game->map.map[0]);
 	i = 0;
 	while (game->map.map[i])
@@ -144,7 +145,7 @@ int check_map_border(t_game *game)
 	i = 0;
 	while (i < game->map.alt)
 	{
-		j = ft_strlen(game->map.map[i]) -1;
+		j = ft_strlen(game->map.map[i]) - 1;
 		if (j >= 0 && game->map.map[i][j] != '1')
 			return (0);
 		i++;
@@ -155,6 +156,7 @@ int check_map_border(t_game *game)
 char	**map_init(t_game *game, char *file)
 {
 	read_map(file, game);
+	check_shape(file, game);
 	altezza_mappa(file, game);
 	map_checkvalues(file, game);
 	if (!game->collectible.nb)
@@ -175,6 +177,5 @@ char	**map_init(t_game *game, char *file)
 	}
 	if (!check_map_border(game))
 		return (NULL);
-	// ft_printf("valore di altezza %d\n", game->map.alt);
 	return (game->map.map);
 }

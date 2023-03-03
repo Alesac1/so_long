@@ -6,11 +6,11 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 15:07:44 by asacchin          #+#    #+#             */
-/*   Updated: 2023/03/01 18:51:30 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/03 12:21:14 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	check_mapextension(char *file)
 {
@@ -60,4 +60,9 @@ int	altezza_mappa(char *file, t_game *game)
 		game->map.alt++;
 	close(fd);
 	return (0);
+}
+
+int	ft_close(void)
+{
+	exit(2);
 }

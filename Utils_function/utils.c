@@ -1,16 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_function.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vpescete <vpescete@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 16:27:52 by vpescete          #+#    #+#             */
-/*   Updated: 2023/02/08 16:31:34 by vpescete         ###   ########.fr       */
+/*   Created: 2023/02/22 18:24:41 by asacchin          #+#    #+#             */
+/*   Updated: 2023/03/03 13:54:36 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../game/so_long.h"
+#include "../so_long.h"
+
+void	error_map(void)
+{
+	ft_printf("Map Error\n");
+	exit(0);
+}
+
+void	*ft_memset(void *str, int c, size_t n)
+{
+	unsigned char	*p;
+
+	p = str;
+	while (n > 0)
+	{
+		*p = c;
+		p++;
+		n--;
+	}
+	return (str);
+}
+
+void	ft_bzero(void *str, size_t n)
+{
+	str = ft_memset(str, '\0', n);
+	return ;
+}
 
 void	*ft_calloc(size_t nmeb, size_t size)
 {
@@ -40,24 +66,4 @@ char	*ft_strdup(const char *s)
 		i++;
 	}
 	return (s2);
-}
-
-void	ft_bzero(void *str, size_t n)
-{
-	str = ft_memset(str, '\0', n);
-	return ;
-}
-
-void	*ft_memset(void *str, int c, size_t n)
-{
-	unsigned char	*p;
-
-	p = str;
-	while (n > 0)
-	{
-		*p = c;
-		p++;
-		n--;
-	}
-	return (str);
 }
