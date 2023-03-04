@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 15:07:44 by asacchin          #+#    #+#             */
-/*   Updated: 2023/03/03 12:21:14 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/04 16:48:39 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	init_objects(t_game *game)
 {
 	game->exit.nb = 0;
 	game->collectible.nb = 0;
+	game->enemy.nb = 0;
 	game->player.nb = 0;
 	game->map.col = 0;
 	game->map.altezza = 0;

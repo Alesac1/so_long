@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:09:00 by asacchin          #+#    #+#             */
-/*   Updated: 2023/03/03 19:48:23 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/04 19:32:20 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_game
 	t_element	collectible;
 	t_element	exit;
 	t_element	floor;
+	t_element	enemy;
 	t_element	wall;
 	t_textures	*images;
 	void		*img;
@@ -103,8 +104,14 @@ void		setup_sprites(t_game *game);
 void		draw_map(t_game *game);
 void		draw_obj(t_game *game);
 int			map_compiler(t_game *game);
-int			update_map(t_game *game);
 void		update_player(t_game *game);
+int			update_map(t_game *game);
+void		draw_pg(t_game *game);
+void		read_map(char	*file, t_game *game);
+void		player_check(char *file, t_game *game);
+void		map_checkvalues(char *file, t_game *game);
+int			check_shape(char *file, t_game *game);
+int 		check_map_border(t_game *game);
 
 t_game		*allocate_struct(void);
 char		*ft_strdup(const char *s);
