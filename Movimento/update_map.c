@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:10:14 by asacchin          #+#    #+#             */
-/*   Updated: 2023/03/04 18:55:08 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:14:46 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	update_map(t_game *game)
 {
+	char	*str;
+
+	str = "bellaaaaaa";
 	draw_map(game);
 	draw_obj(game);
 	draw_pg(game);

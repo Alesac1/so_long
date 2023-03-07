@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:17:20 by asacchin          #+#    #+#             */
-/*   Updated: 2023/03/04 18:57:10 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/07 15:10:28 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	map_checkvalues(char *file, t_game *game)
 				game->collectible.nb++;
 			if (game->map.map[i][j] == 'A')
 				game->enemy.nb++;
-			else if (game->map.map[i][j] == 'E')
+			if (game->map.map[i][j] == 'E')
 			{
 				game->exit.nb++;
 				game->exit.pos.x = i;

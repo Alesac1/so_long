@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:28:02 by asacchin          #+#    #+#             */
-/*   Updated: 2023/03/04 18:31:18 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:32:52 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,22 +133,56 @@ int	key_hook(int key, t_game *game)
 	int	x;
 	int	y;
 
+	game->side = 0;
 	x = game->player.pos.x;
 	y = game->player.pos.y;
 	if (key == 53 || key == 13 || key == 0 || key == 1 || key == 2
 		|| key == 126 || key == 125 || key == 124 || key == 123)
 	{
 		if (key == 13 || key == 126)
+		{
 			move_up(game);
+			game->movecount++;
+		}
 		if (key == 1 || key == 125)
+		{
 			move_down(game);
+			game->movecount++;
+		}
+	}
+}
+
+
+
+int	key_hook(int key, t_game *game)
+{
+	int	x;
+	int	y;
+
+	game->side = 0;
+	x = game->player.pos.x;
+	y = game->player.pos.y;
+	if (key == 53 || key == 13 || key == 0 || key == 1 || key == 2
+		|| key == 126 || key == 125 || key == 124 || key == 123)
+		
 		if (key == 2 || key == 124)
+		{
 			move_right(game);
+			game->side = 1;
+			game->movecount++;
+		}
 		if (key == 0 || key == 123)
+		{
 			move_left(game);
+			game->side = -1;
+			game->movecount++;
+		}
+
 		if (key == 53)
 			ft_close();
-		ft_printf("valore di collectible: %d\n", game->collectible.nb);
+		printf("move : %d\n", game->movecount);
+		mlx_string_put(game->mlx, game->win, 9, 9, 0xFFFFFFFF, 
+			ft_itoa(game->movecount));
 	}
 	return (0);
 }

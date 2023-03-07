@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 15:07:44 by asacchin          #+#    #+#             */
-/*   Updated: 2023/03/04 16:48:39 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:07:13 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_game	*allocate_struct(void)
 
 void	init_objects(t_game *game)
 {
+	game->movecount = 0;
 	game->exit.nb = 0;
 	game->collectible.nb = 0;
 	game->enemy.nb = 0;

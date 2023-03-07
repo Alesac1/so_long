@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:09:00 by asacchin          #+#    #+#             */
-/*   Updated: 2023/03/04 19:32:20 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:25:07 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ typedef struct s_element
 	int			framecount;
 	void		*background;
 	int			nb;
-	void		*reference;
 	t_image		currentimg;
 	t_image		img0;
 	t_image		img1;
+	t_image		img2;
 }	t_element;
 
 typedef struct s_map
@@ -88,11 +88,13 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	char		*str;
+	int			side;
 	int			counter;
 	int			nbmoves;
 	int			status;
 	int			height;
 	int			widht;
+	int			movecount;
 }	t_game;
 
 /*			Map			*/
@@ -119,5 +121,6 @@ void		error_map(void);
 int			ft_close(void);
 int			key_hook(int key, t_game *game);
 void		move_up(t_game *game);
+char		*ft_itoa(int n);
 
 #endif

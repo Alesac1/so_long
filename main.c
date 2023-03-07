@@ -6,7 +6,7 @@
 /*   By: asacchin <alesacchi1907@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 15:09:08 by asacchin          #+#    #+#             */
-/*   Updated: 2023/03/04 16:12:47 by asacchin         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:29:08 by asacchin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_game	*game;
+	char	*s1;
 
 	if (ac != 2)
 		return (1 * ft_printf("Missing .ber file"));
@@ -32,7 +33,6 @@ int	main(int ac, char **av)
 		update_map(game);
 		mlx_key_hook(game->win, key_hook, (void *)game);
 		mlx_hook(game->win, 17, 0, ft_close, 0);
-		ft_printf("ciaooo\n");
 		mlx_loop(game->mlx);
 	}
 	return (0);
